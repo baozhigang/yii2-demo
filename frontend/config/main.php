@@ -25,7 +25,7 @@ $config = [
         //     ],
         // ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'site/error2',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
