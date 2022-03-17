@@ -38,4 +38,4 @@ docker-compose.override.yml
 /.env
 /app.env
 /zz-local.ini
-
+/demo.bundle

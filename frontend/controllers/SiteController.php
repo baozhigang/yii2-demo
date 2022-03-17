@@ -45,7 +45,7 @@ class SiteController extends Controller
             return $exception->getMessage();
         }
 
-        // return [1,2,3];
+        return [1,2,3];
     }
 
 
