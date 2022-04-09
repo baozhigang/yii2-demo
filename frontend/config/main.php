@@ -12,17 +12,18 @@ $config = [
                 'application/json' => 'yii\web\JsonParser',
             ],
         ],
+        'response' => [
+            'format' => yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
+        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'ss-frontend',
         ],
         // 'user' => [
         //     'identityClass' => 'common\models\User',
-        //     'enableAutoLogin' => true,
-        //     'identityCookie' => [
-        //         'name' => '_id',
-        //         'httpOnly' => true,
-        //     ],
+        //     'enableSession' => false,
+        //     'loginUrl' => null,
         // ],
         'errorHandler' => [
             'errorAction' => 'site/error2',
