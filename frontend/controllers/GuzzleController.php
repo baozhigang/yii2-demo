@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\Promise;
 use Psr\Http\Message\ResponseInterface;
 use yii\web\Controller;
 
@@ -27,33 +28,42 @@ class GuzzleController extends Controller
 
     /**
      * 这个异步为什么没有生效？
-     *
+     * 还是没有拿到异步请求返回的值。
+     * 只有调用 wait 方法同步之后，才能拿到返回值，
+     * 那么怎么使用异步的返回值？
      */
     public function actionIndex2()
     {
         $client = new HttpClient();
-        // $promise = $client->requestAsync('GET', 'http://httpbin.org/get');
-
-        // // return $promise->getBody()->getContents();
-
-        // $promise->then(
-        //     function (ResponseInterface $res) {
-        //         return $res->getStatusCode() . "\n";
-        //     },
-        //     function (RequestException $ex) {
-        //         return $ex->getMessage() .' '. $ex->getRequest()->getMethod();
-        //     }
-        // );
-
         $promise = $client->requestAsync('GET', 'http://httpbin.org/get');
+
         $promise->then(
             function (ResponseInterface $res) {
-                return $res->getStatusCode() . "\n";
+                echo $res->getStatusCode() . "\n";
+                echo $res->getBody()->getContents();
             },
-            function (RequestException $e) {
-                echo $e->getMessage() . " " . $e->getRequest()->getMethod();
+            function (RequestException $ex) {
+                echo $ex->getMessage() .' '. $ex->getRequest()->getMethod();
             }
         );
 
+        // echo $promise->getState();
+
+        $promise->wait();
+    }
+
+    public function actionP1()
+    {
+        $promise = new Promise();
+        $promise->then(
+            function ($value) {
+                echo 'value ' . $value;
+            },
+            function ($reason) {
+                echo 'reason' . $reason;
+            }
+        );
+
+        $promise->resolve('hello.');
     }
 }
