@@ -12,10 +12,10 @@ $config = [
                 'application/json' => 'yii\web\JsonParser',
             ],
         ],
-        'response' => [
-            'format' => yii\web\Response::FORMAT_JSON,
-            'charset' => 'UTF-8',
-        ],
+        // 'response' => [
+        //     'format' => yii\web\Response::FORMAT_JSON,
+        //     'charset' => 'UTF-8',
+        // ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'ss-frontend',
