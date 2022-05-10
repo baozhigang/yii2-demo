@@ -40,19 +40,19 @@ class SiteController extends Controller
      * 3.关闭debug模式 或者是用户异常，比如BadRequestHttpException（UserException下的异常）
      *  vendor/yiisoft/yii2/web/ErrorHandler.php  105-109行
     */
-    public function actionError2()
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+    // public function actionError2()
+    // {
+    //     Yii::$app->response->format = Response::FORMAT_JSON;
 
-        $exception = Yii::$app->errorHandler->exception;
-        if ($exception !== null) {
-            // return $this->render('error', ['exception' => $exception]);
-            // return $exception->getMessage();
-            return [3,3];
-        }
+    //     $exception = Yii::$app->errorHandler->exception;
+    //     if ($exception !== null) {
+    //         // return $this->render('error', ['exception' => $exception]);
+    //         // return $exception->getMessage();
+    //         return [3,3];
+    //     }
 
-        return [1,2,3];
-    }
+    //     return [1,2,3];
+    // }
 
 
 }

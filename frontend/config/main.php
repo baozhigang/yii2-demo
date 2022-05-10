@@ -1,5 +1,7 @@
 <?php
 
+use common\filters\ResponseFilter;
+
 $config = [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
@@ -26,7 +28,7 @@ $config = [
         //     'loginUrl' => null,
         // ],
         'errorHandler' => [
-            'errorAction' => 'site/error2',
+            // 'errorAction' => 'site/error2',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -34,6 +36,9 @@ $config = [
             'rules' => [
             ],
         ],
+    ],
+    'as response' => [
+        'class' => ResponseFilter::class,
     ],
     'modules' => [],
 ];

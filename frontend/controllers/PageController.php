@@ -14,8 +14,8 @@ class PageController extends Controller
 
         $pagination = new Pagination([
             'totalCount' => $count,
+            'pageSize' => 10,
         ]);
-        $pagination->setPageSize(10);
 
         $data = Yii::$app->db->createCommand("select * from book limit {$pagination->offset}, {$pagination->limit}")->queryAll();
 
